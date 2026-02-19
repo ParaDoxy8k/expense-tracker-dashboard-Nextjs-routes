@@ -99,7 +99,7 @@ export function AddExpenseDialog({ onAdd }: AddExpenseDialogProps) {
             </div>
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-medium text-card-foreground">
-                Amount ($)
+                Amount (฿)
               </label>
               <Input
                 type="number"

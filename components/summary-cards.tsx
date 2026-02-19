@@ -26,13 +26,13 @@ export function SummaryCards({
   const cards = [
     {
       title: "Total Expenses",
-      value: `$${total.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      value: `${total.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ฿`,
       icon: DollarSign,
       accent: "bg-primary/10 text-primary",
     },
     {
       title: "Average Expense",
-      value: `$${average.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      value: `${average.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ฿`,
       icon: TrendingUp,
       accent: "bg-chart-2/10 text-chart-2",
     },

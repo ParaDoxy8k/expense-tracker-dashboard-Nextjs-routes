@@ -170,7 +170,7 @@ export function ExpenseTable({
               <TableHead className="text-right">
                 <SortButton field="amount">Amount</SortButton>
               </TableHead>
-              <TableHead className="w-[50px]">
+              <TableHead className="w-12.5">
                 <span className="sr-only">Actions</span>
               </TableHead>
             </TableRow>
@@ -202,10 +202,10 @@ export function ExpenseTable({
                   </Badge>
                 </TableCell>
                 <TableCell className="text-right font-medium tabular-nums text-card-foreground">
-                  ${expense.amount.toLocaleString("en-US", {
+                  {expense.amount.toLocaleString("en-US", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2,
-                  })}
+                  })} ฿
                 </TableCell>
                 <TableCell>
                   <DropdownMenu>
