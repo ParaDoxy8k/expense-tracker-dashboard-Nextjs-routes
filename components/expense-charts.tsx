@@ -67,7 +67,7 @@ export function CategoryChart({ byCategory }: CategoryChartProps) {
           <CardTitle>Spending by Category</CardTitle>
           <CardDescription>No data for the selected period</CardDescription>
         </CardHeader>
-        <CardContent className="flex h-[300px] items-center justify-center">
+        <CardContent className="flex h-75 items-center justify-center">
           <p className="text-muted-foreground">No expenses to display</p>
         </CardContent>
       </Card>
@@ -82,7 +82,7 @@ export function CategoryChart({ byCategory }: CategoryChartProps) {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
-          <div className="mx-auto h-[240px] w-[240px] lg:mx-0">
+          <div className="mx-auto h-60 w-60 lg:mx-0">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -115,10 +115,10 @@ export function CategoryChart({ byCategory }: CategoryChartProps) {
                     />
                     <span className="flex-1 text-sm text-card-foreground">{item.name}</span>
                     <span className="text-sm font-medium tabular-nums text-card-foreground">
-                      ${item.value.toLocaleString("en-US", {
+                      {item.value.toLocaleString("en-US", {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
-                      })}
+                      })} ฿
                     </span>
                     <span className="w-12 text-right text-xs text-muted-foreground tabular-nums">
                       {percentage}%
@@ -169,7 +169,7 @@ export function TrendChart({ monthlyTrend }: TrendChartProps) {
           <CardTitle>Monthly Trend</CardTitle>
           <CardDescription>No data for the selected period</CardDescription>
         </CardHeader>
-        <CardContent className="flex h-[300px] items-center justify-center">
+        <CardContent className="flex h-75 items-center justify-center">
           <p className="text-muted-foreground">No expenses to display</p>
         </CardContent>
       </Card>
@@ -183,7 +183,7 @@ export function TrendChart({ monthlyTrend }: TrendChartProps) {
         <CardDescription>Your spending over time</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="h-[280px]">
+        <div className="h-70">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={monthlyTrend} barCategoryGap="20%">
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
@@ -197,7 +197,7 @@ export function TrendChart({ monthlyTrend }: TrendChartProps) {
                 tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
                 tickLine={false}
                 axisLine={false}
-                tickFormatter={(val) => `$${val}`}
+                tickFormatter={(val) => `${val} ฿`}
               />
               <Tooltip content={<TrendTooltip />} />
               <Bar dataKey="total" radius={[6, 6, 0, 0]}>
