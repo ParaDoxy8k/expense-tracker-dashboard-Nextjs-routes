@@ -9,6 +9,15 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: 'Expense Tracker',
   description: 'for test intern',
+  icons: {
+    icon: [
+      {
+        url: "/icon-light-32x32.png",
+        media: "(prefers-color-scheme: light)",
+      },
+      
+    ]
+  },
 }
 
 export default function RootLayout({
