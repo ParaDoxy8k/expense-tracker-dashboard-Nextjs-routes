@@ -1,35 +1,34 @@
 import { NextResponse } from "next/server"
-import { getAllExpenses, addExpense } from "@/lib/expenses-store"
+import { supabase } from "@/lib/supabase"
 
-export async function GET() {
-  const expenses = getAllExpenses()
-  return NextResponse.json(expenses)
+export async function DELETE(
+  _: Request,
+  { params }: { params: { id: string } }
+) {
+  const { error } = await supabase
+    .from("expenses")
+    .delete()
+    .eq("id", params.id)
+
+  if (error) return NextResponse.json({ error }, { status: 500 })
+
+  return NextResponse.json({ success: true })
 }
 
-export async function POST(request: Request) {
-  try {
-    const body = await request.json()
-    const { description, amount, category, date } = body
+export async function PUT(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
+  const body = await req.json()
 
-    if (!description || !amount || !category || !date) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      )
-    }
+  const { data, error } = await supabase
+    .from("expenses")
+    .update(body)
+    .eq("id", params.id)
+    .select()
+    .single()
 
-    const expense = addExpense({
-      description,
-      amount: Number(amount),
-      category,
-      date,
-    })
+  if (error) return NextResponse.json({ error }, { status: 500 })
 
-    return NextResponse.json(expense, { status: 201 })
-  } catch {
-    return NextResponse.json(
-      { error: "Invalid request body" },
-      { status: 400 }
-    )
-  }
+  return NextResponse.json(data)
 }
