@@ -7,7 +7,7 @@ import { CategoryChart, TrendChart } from "@/components/expense-charts"
 import { FiltersBar } from "@/components/filters-bar"
 import { ExpenseTable } from "@/components/expense-table"
 import { AddExpenseDialog } from "@/components/add-expense-dialog"
-
+import { ModeToggle } from "./btn-darkmode"
 export function Dashboard() {
   const {
     expenses,
@@ -56,7 +56,12 @@ export function Dashboard() {
               </p>
             </div>
           </div>
-          <AddExpenseDialog onAdd={addExpense} />
+          <div className="flex">
+            <div className="px-4 md:flex hidden">
+              <ModeToggle/>
+            </div>
+            <AddExpenseDialog onAdd={addExpense} />
+          </div>
         </div>
       </header>
 
